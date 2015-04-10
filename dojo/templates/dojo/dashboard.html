@@ -7,7 +7,7 @@
 {% block content %}
     <h3>Dashboard for {{ request.user.get_full_name }}</h3>
     <div class="row status">
-        <div class="col-lg-12">
+        <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
@@ -30,17 +30,39 @@
                 </a>
             </div>
         </div>
-{% comment %}
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-bug fa-5x"></i>
+                            <i class="fa fa-close fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ finding_count }}</div>
-                            <div>Findings In Last Seven Days</div>
+                            <div>Cancelled Engagements</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'open_findings' %}?date=2&reporter={{ request.user.id }}&o=numerical_severity">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-send fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ finding_count }}</div>
+                            <div>Pending Engagements</div>
                         </div>
                     </div>
                 </div>
@@ -59,11 +81,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-fire-extinguisher fa-5x"></i>
+                            <i class="fa fa-graduation-cap fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ mitigated_count }}</div>
-                            <div>Findings Closed In Last Seven Days</div>
+                            <div>Completed Engagements</div>
                         </div>
                     </div>
                 </div>
@@ -82,11 +104,34 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
+                            <i class="fa fa-spinner fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ accepted_count }}</div>
+                            <div>Awaiting SoW Engagements</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'accepted_findings' %}?test__engagement__risk_acceptance__created=2&test__engagement__risk_acceptance__reporter={{ request.user.id }}">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
                             <i class="fa fa-check fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ accepted_count }}</div>
-                            <div>Findings Accepted In Last Seven Days</div>
+                            <div>Accepted Engagements</div>
                         </div>
                     </div>
                 </div>
@@ -101,6 +146,7 @@
             </div>
         </div>
     </div>
+{% comment %}
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-default">
@@ -149,7 +195,6 @@
             </div>
         {% endif %}
     </div>
-{% endcomment %}
 {% endblock %}
 {% block postscript %}
     <!-- Flot Charts JavaScript -->
@@ -368,4 +413,5 @@
         });
 
     </script>
+{% endcomment %}
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     {% if user.is_staff %}
-        <a class="btn btn-primary" href="{% url 'add_product_type' %}"> New Product Type </a>
+        <a class="btn btn-primary" href="{% url 'add_product_type' %}"> New Business Unit </a>
         <br/>
         <br/>
     {% endif %}
@@ -11,9 +11,9 @@
                    class="table-responsive tablesorter-bootstrap table table-bordered table-condensed table-striped">
                 <thead>
                 <tr>
-                    <th> Product Type</th>
-                    <th> # of Products</th>
-                    <th> # of active findings</th>
+                    <th> Business Unit</th>
+                    <th> # of Project</th>
+                    <th> # of Assessments</th>
                     {% if user.is_staff %}
                         <th> Actions</th>{% endif %}
                 </tr>
@@ -28,7 +28,7 @@
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-sm btn-primary" href="{% url 'add_product_to_product_type' pt.id %}">
-                                        Add Product
+                                        Add Project
                                     </a>
                                     <a class="btn btn-sm btn-warning" href="{% url 'product_type_report' pt.id %}">
                                         Generate Report
@@ -43,7 +43,7 @@
             </table>
         </div>
     {% else %}
-        No product types found.
+        No business units found.
     {% endif %}
     {% include "dojo/paging_snippet.html" with page=pts %}
 {% endblock %}
