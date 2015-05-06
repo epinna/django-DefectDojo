@@ -128,6 +128,7 @@
                         <li>
                             <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
+{% comment %}
                         <li>
                             <a href="{% url 'product' %}"><i class="fa fa-list fa-fw"></i> Products{% if request.user.is_staff %}<span class="glyphicon arrow"></span>{% endif %}</a>
                             {% if request.user.is_staff %}
@@ -141,6 +142,8 @@
                             {% endif %}
                             <!-- /.nav-second-level -->
                         </li>
+{% endcomment %}
+
                         {% if request.user.is_staff %}
                             <li>
                                 <a href="{% url 'engagement' %}"><i class="fa fa-inbox fa-fw"></i> Engagements<span class="glyphicon arrow"></span></a>
@@ -154,6 +157,7 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+{% comment %}
                             <li>
                                 <a href="{% url 'open_findings' %}"><i class="fa fa-exclamation-triangle fa-fw"></i> Findings<span
                                         class="glyphicon arrow"></span></a>
@@ -170,7 +174,10 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+{% endcomment %}
                         {% endif %}
+
+{% comment %}
                         <li>
                             <a href="{% url 'metrics' %}"><i class="fa fa-line-chart  fa-fw"></i> Metrics<span
                                     class="glyphicon arrow"></span></a>
@@ -199,11 +206,11 @@
 
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
+                        </li>        
+{% endcomment %}
                         <li>
                             <a href="{% url 'calendar' %}"><i class="fa fa-calendar fa-fw"></i> Calendar</a>
                         </li>
-
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
