@@ -7,7 +7,7 @@
 {% block content %}
     <h3>Dashboard for {{ request.user.get_full_name }}</h3>
     <div class="row status">
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
@@ -30,6 +30,7 @@
                 </a>
             </div>
         </div>
+{% comment %}
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-red">
                 <div class="panel-heading">
@@ -148,6 +149,7 @@
             </div>
         {% endif %}
     </div>
+{% endcomment %}
 {% endblock %}
 {% block postscript %}
     <!-- Flot Charts JavaScript -->
