@@ -128,9 +128,9 @@
                         <li>
                             <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-{% comment %}
+
                         <li>
-                            <a href="{% url 'product' %}"><i class="fa fa-list fa-fw"></i> Products{% if request.user.is_staff %}<span class="glyphicon arrow"></span>{% endif %}</a>
+                            <a href="{% url 'product' %}"><i class="fa fa-list fa-fw"></i> Projects{% if request.user.is_staff %}<span class="glyphicon arrow"></span>{% endif %}</a>
                             {% if request.user.is_staff %}
                             <ul class="nav nav-second-level">
 
@@ -142,7 +142,6 @@
                             {% endif %}
                             <!-- /.nav-second-level -->
                         </li>
-{% endcomment %}
 
                         {% if request.user.is_staff %}
                             <li>
@@ -206,7 +205,7 @@
 
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>        
+                        </li>
 {% endcomment %}
                         <li>
                             <a href="{% url 'calendar' %}"><i class="fa fa-calendar fa-fw"></i> Calendar</a>
